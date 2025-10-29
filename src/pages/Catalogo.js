@@ -9,15 +9,15 @@ const Catalogo = () => {
 
   const cargarProductos = async () => {
     const url = proveedorFiltro
-      ? `http://localhost:3001/productos?proveedor=${encodeURIComponent(proveedorFiltro)}`
-      : 'http://localhost:3001/productos';
+      ? `https://catalogo-backend-w8ys.onrender.com/?proveedor=${encodeURIComponent(proveedorFiltro)}`
+      : 'https://catalogo-backend-w8ys.onrender.com/';
 
     const res = await axios.get(url);
     setProductos(res.data);
   };
 
   const cargarProveedores = async () => {
-    const res = await axios.get('http://localhost:3001/productos/proveedores');
+    const res = await axios.get('https://catalogo-backend-w8ys.onrender.com//proveedores');
     setProveedores(res.data);
   };
 
@@ -33,7 +33,7 @@ const Catalogo = () => {
     const votos = JSON.parse(localStorage.getItem('votos') || '{}');
     if (votos[codigoProducto]) return;
 
-    await axios.post(`http://localhost:3001/productos/votar/${codigoProducto}`);
+    await axios.post(`https://catalogo-backend-w8ys.onrender.com//votar/${codigoProducto}`);
     votos[codigoProducto] = true;
     localStorage.setItem('votos', JSON.stringify(votos));
     cargarProductos();
@@ -43,7 +43,7 @@ const Catalogo = () => {
     const votos = JSON.parse(localStorage.getItem('votos') || '{}');
     if (!votos[codigoProducto]) return;
 
-    await axios.post(`http://localhost:3001/productos/desvotar/${codigoProducto}`);
+    await axios.post(`https://catalogo-backend-w8ys.onrender.com//desvotar/${codigoProducto}`);
     delete votos[codigoProducto];
     localStorage.setItem('votos', JSON.stringify(votos));
     cargarProductos();

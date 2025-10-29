@@ -9,7 +9,7 @@ const Proveedor = () => {
 
   const cargarProductos = async () => {
     try {
-      const res = await axios.get(`http://localhost:3001/productos?proveedor=${encodeURIComponent(nombreProveedor)}`);
+      const res = await axios.get(`https://catalogo-backend-w8ys.onrender.com/?proveedor=${encodeURIComponent(nombreProveedor)}`);
       setProductos(res.data);
     } catch (error) {
       console.error('Error al cargar productos:', error);
@@ -25,7 +25,7 @@ const Proveedor = () => {
     if (votos[codigoProducto]) return;
 
     try {
-      await axios.post(`http://localhost:3001/productos/votar/${codigoProducto}`);
+      await axios.post(`https://catalogo-backend-w8ys.onrender.com//votar/${codigoProducto}`);
       votos[codigoProducto] = true;
       localStorage.setItem('votos', JSON.stringify(votos));
       cargarProductos(); // actualiza sin recargar
@@ -39,7 +39,7 @@ const Proveedor = () => {
     if (!votos[codigoProducto]) return;
 
     try {
-      await axios.post(`http://localhost:3001/productos/desvotar/${codigoProducto}`);
+      await axios.post(`https://catalogo-backend-w8ys.onrender.com//desvotar/${codigoProducto}`);
       delete votos[codigoProducto];
       localStorage.setItem('votos', JSON.stringify(votos));
       cargarProductos(); // actualiza sin recargar

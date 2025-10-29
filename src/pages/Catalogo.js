@@ -9,15 +9,15 @@ const Catalogo = () => {
 
   const cargarProductos = async () => {
     const url = proveedorFiltro
-      ? `https://catalogo-backend-w8ys.onrender.com/?proveedor=${encodeURIComponent(proveedorFiltro)}`
-      : 'https://catalogo-backend-w8ys.onrender.com/';
+      ? `https://catalogo-backend-w8ys.onrender.com/productos?proveedor=${encodeURIComponent(proveedorFiltro)}`
+      : 'https://catalogo-backend-w8ys.onrender.com/productos';
 
     const res = await axios.get(url);
     setProductos(res.data);
   };
 
   const cargarProveedores = async () => {
-    const res = await axios.get('https://catalogo-backend-w8ys.onrender.com/proveedores');
+    const res = await axios.get('https://catalogo-backend-w8ys.onrender.com/productos/proveedores');
     setProveedores(res.data);
   };
 
@@ -33,7 +33,7 @@ const Catalogo = () => {
     const votos = JSON.parse(localStorage.getItem('votos') || '{}');
     if (votos[codigoProducto]) return;
 
-    await axios.post(`https://catalogo-backend-w8ys.onrender.com/votar/${codigoProducto}`);
+    await axios.post(`https://catalogo-backend-w8ys.onrender.com/productos/votar/${codigoProducto}`);
     votos[codigoProducto] = true;
     localStorage.setItem('votos', JSON.stringify(votos));
     cargarProductos();
@@ -43,7 +43,7 @@ const Catalogo = () => {
     const votos = JSON.parse(localStorage.getItem('votos') || '{}');
     if (!votos[codigoProducto]) return;
 
-    await axios.post(`https://catalogo-backend-w8ys.onrender.com/desvotar/${codigoProducto}`);
+    await axios.post(`https://catalogo-backend-w8ys.onrender.com/productos/desvotar/${codigoProducto}`);
     delete votos[codigoProducto];
     localStorage.setItem('votos', JSON.stringify(votos));
     cargarProductos();

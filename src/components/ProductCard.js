@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
 const ProductCard = ({ producto, onVotar, onDesvotar }) => {
-  const { nombreProducto, proveedor, precioLPS, imagenUrl, codigoProducto, votos } = producto;
+  const { nombreproducto, proveedor, preciolps, imagenurl, codigoproducto, votos } = producto;
   const votosLocal = JSON.parse(localStorage.getItem('votos') || '{}');
-  const yaVotado = votosLocal[codigoProducto];
+  const yaVotado = votosLocal[codigoproducto];
   const [showModal, setShowModal] = useState(false);
 
   const handleClick = () => {
     if (yaVotado) {
-      onDesvotar(codigoProducto);
+      onDesvotar(codigoproducto);
     } else {
-      onVotar(codigoProducto);
+      onVotar(codigoproducto);
     }
   };
 
@@ -25,17 +25,17 @@ const ProductCard = ({ producto, onVotar, onDesvotar }) => {
     }}>
       <div style={{ cursor: 'pointer' }} onClick={() => setShowModal(true)}>
         <img
-          src={`http://localhost:3001${imagenUrl}`}
-          alt={nombreProducto}
+          src={`https://catalogo-backend-w8ys.onrender.com${imagenurl}`}
+          alt={nombreproducto}
           style={{
             width: '100%',
             borderRadius: '5px'
           }}
         />
       </div>
-      <h3>{nombreProducto}</h3>
+      <h3>{nombreproducto}</h3>
       <p><strong>Proveedor:</strong> {proveedor}</p>
-      <p><strong>Precio:</strong> L.{precioLPS}</p>
+      <p><strong>Precio:</strong> L.{preciolps}</p>
       <p><strong>Votos:</strong> {votos}</p>
       <button onClick={handleClick}>
         {yaVotado ? 'Quitar voto' : 'Me gusta'}
@@ -51,8 +51,8 @@ const ProductCard = ({ producto, onVotar, onDesvotar }) => {
           zIndex: 1000
         }} onClick={() => setShowModal(false)}>
           <img
-            src={`http://localhost:3001${imagenUrl}`}
-            alt={nombreProducto}
+            src={`https://catalogo-backend-w8ys.onrender.com${imagenurl}`}
+            alt={nombreproducto}
             style={{
               maxWidth: '90%',
               maxHeight: '90%',

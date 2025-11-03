@@ -8,6 +8,7 @@ const Proveedor = () => {
   const [productos, setProductos] = useState([]);
 
   const cargarProductos = async () => {
+    console.log(nombreProveedor)
     try {
       const res = await axios.get(`https://catalogo-backend-w8ys.onrender.com/productos?proveedor=${encodeURIComponent(nombreProveedor)}`);
       setProductos(res.data);

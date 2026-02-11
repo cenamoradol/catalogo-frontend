@@ -26,14 +26,14 @@ const ProductCard = ({ producto, onVotar, onDesvotar }) => {
       <div style={{ cursor: 'pointer' }} onClick={() => setShowModal(true)}>
         <img
           src={`https://catalogo-backend-w8ys.onrender.com${imagenurl}`}
-          alt={nombreproducto}
+          alt={codigoproducto}
           style={{
             width: '100%',
             borderRadius: '5px'
           }}
         />
       </div>
-      <h3>{nombreproducto}</h3>
+      <h3>{nombreproducto} {codigoproducto}</h3>
       <p><strong>Proveedor:</strong> {proveedor}</p>
       <p><strong>Precio:</strong> L.{preciolps}</p>
       <p><strong>Votos:</strong> {votos}</p>
@@ -52,7 +52,7 @@ const ProductCard = ({ producto, onVotar, onDesvotar }) => {
         }} onClick={() => setShowModal(false)}>
           <img
             src={`https://catalogo-backend-w8ys.onrender.com${imagenurl}`}
-            alt={nombreproducto}
+            alt={codigoproducto}
             style={{
               maxWidth: '90%',
               maxHeight: '90%',

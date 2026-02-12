@@ -2,14 +2,22 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Catalogo from './pages/Catalogo';
 import Proveedor from './pages/Proveedor';
+import AdminEliminar from './pages/AdminEliminar';
+import ImportarProductos from './pages/ImportarProductos';
+
+import Layout from './components/Layout';
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Catalogo />} />
-        <Route path="/:nombreProveedor" element={<Proveedor />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Catalogo />} />
+          <Route path="/proveedor/:nombreProveedor" element={<Proveedor />} />
+          <Route path="/admin/eliminar" element={<AdminEliminar />} />
+          <Route path="/admin/importar" element={<ImportarProductos />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 }

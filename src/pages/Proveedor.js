@@ -9,6 +9,7 @@ const Proveedor = () => {
   const [loading, setLoading] = useState(true);
 
   const cargarProductos = async () => {
+    console.log(nombreProveedor)
     try {
       setLoading(true);
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/productos?proveedor=${encodeURIComponent(nombreProveedor)}`);

@@ -15,6 +15,9 @@ const Layout = ({ children }) => {
                     <NavLink to="/admin/importar" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>
                         Importar Excel
                     </NavLink>
+                    <NavLink to="/admin/reportes" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>
+                        Reportes
+                    </NavLink>
                     <NavLink to="/admin/eliminar" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>
                         Administrar
                     </NavLink>

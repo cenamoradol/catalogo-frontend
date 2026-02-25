@@ -4,6 +4,7 @@ import Catalogo from './pages/Catalogo';
 import Proveedor from './pages/Proveedor';
 import AdminEliminar from './pages/AdminEliminar';
 import ImportarProductos from './pages/ImportarProductos';
+import Reportes from './pages/Reportes';
 
 import Layout from './components/Layout';
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/proveedor/:nombreProveedor" element={<Proveedor />} />
           <Route path="/admin/eliminar" element={<AdminEliminar />} />
           <Route path="/admin/importar" element={<ImportarProductos />} />
+          <Route path="/admin/reportes" element={<Reportes />} />
         </Routes>
       </Layout>
     </Router>
